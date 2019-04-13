@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<Ejemplo_Clase3.web.Models.Personas>
+
+@{
+    ViewBag.Title = Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_Titulo;
+}
+
+<h2>@Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_Titulo</h2>
+
+<p>
+    @Html.ActionLink(Ejemplo_Clase3.web.Recursos.Etiquetas.Botones_Crear, "Create",null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped" >
+    <tr>
+        <th>
+            @Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_Nombre
+        </th>
+        <th>
+            @Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_Direccion
+        </th>
+        <th>
+            @Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_FechaNacimiento
+        </th>
+        <th>
+            @Ejemplo_Clase3.web.Recursos.Etiquetas.Personas_Edad
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.ActionLink(Ejemplo_Clase3.web.Recursos.Etiquetas.Botones_Editar, "Edit", new { id = item.PersonaId },new {@class="btn btn-secondary"}) |
+                @Html.ActionLink(Ejemplo_Clase3.web.Recursos.Etiquetas.Botones_Detalles, "Details", new { id = item.PersonaId }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink(Ejemplo_Clase3.web.Recursos.Etiquetas.Botones_Borrar, "Delete", new { id = item.PersonaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
